@@ -26,6 +26,14 @@ export const styles = StyleSheet.create({
     width: 1,
     height: '100%', 
     backgroundColor: 'black', 
+  },
+  mapview: {
+    flex: 1,
+    width: '100%'
+  },
+  map: {
+    width: '100%',
+    height: '100%',
   }
 
 })

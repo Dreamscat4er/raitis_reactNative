@@ -1,7 +1,7 @@
-import { Text, View, TextInput, Dimensions, Button } from 'react-native';
+import { Text, View, TextInput, Dimensions, Button, Pressable } from 'react-native';
 import { useState } from 'react';
 import {styles} from '../constants/Styles';
-import {useRouter} from 'expo-router';
+import {useRouter, Link} from 'expo-router';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import { ILogIn } from '@/constants/Types';
 import { FormInput } from '@/components/FormInput';
@@ -9,7 +9,7 @@ import { FormInput } from '@/components/FormInput';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-export default function App() {
+export default function HomePage() {
 
   const {
     control,
@@ -20,7 +20,7 @@ export default function App() {
   )
 
   const onSubmit: SubmitHandler<ILogIn> = data => console.log(data);
-  const router = useRouter();
+  
   
     const {height, width} = Dimensions.get('screen');
     
@@ -51,11 +51,26 @@ export default function App() {
 
           <View style={[{flexDirection:'row'}, {justifyContent:'center'}]}>
             <View style={{padding:10}}>
-              <Button title='LogIn' onPress={handleSubmit(onSubmit)}/>
+              <Link href="" asChild>
+                <Pressable onPress={handleSubmit(onSubmit)}>
+                  <Text>LogIn</Text>
+                </Pressable>
+              </Link>
             </View>
             <View style={styles.separator}/>
             <View style={{padding:10}}>
-              <Button title='SignUp' onPress={()=>router.push('/SignUp')}/>
+              <Link href="/signUp" asChild>
+                <Pressable>
+                  <Text>SignUp</Text>
+                </Pressable>
+              </Link>
+            </View>
+            <View style={{padding:10}}>
+              <Link href="/mainMap" asChild>
+                <Pressable>
+                  <Text>ToMap</Text>
+                </Pressable>
+              </Link>
             </View>
           </View>
           

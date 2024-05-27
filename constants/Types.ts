@@ -7,7 +7,7 @@ export interface IAddress {
     house:string;
 }
 export interface ISignUp {
-    username:string;
+    name:string;
     email:string;
     phoneNumber:string;
     password:string;

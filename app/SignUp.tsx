@@ -1,8 +1,8 @@
 import {useForm, SubmitHandler, Controller} from 'react-hook-form'
-import { Text, View, TextInput, Dimensions, Button } from 'react-native';
+import { Text, View, TextInput, Dimensions, Button, Pressable } from 'react-native';
 import { ISignUp } from '@/constants/Types';
 import { FormInput } from '@/components/FormInput';
-import { useRouter } from 'expo-router';
+import { Link } from 'expo-router';
 import { styles } from '@/constants/Styles';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -18,17 +18,17 @@ export default function SignUp () {
 
     const onSubmit: SubmitHandler<ISignUp> = data => console.log(data);
     const pwdMatch = watch('password');
-    const router = useRouter();
+    
 
     return (
         <View>
             <View>
                 <FormInput
                 control={control}
-                name='username'
-                placeholder='username'
+                name='name'
+                placeholder='name'
                 rules={
-                {required:'username is required'}
+                {required:'name is required'}
                 }/>
             </View>
 
@@ -76,11 +76,19 @@ export default function SignUp () {
             
             <View style={[{flexDirection:'row'}, {justifyContent:'center'}]}>
                 <View style={{padding:10}}>
-                    <Button title='Register' disabled = {!isDirty || isValid} onPress={handleSubmit(onSubmit)} />
+                    <Link href="" asChild>
+                        <Pressable disabled = {!isDirty || isValid} onPress={handleSubmit(onSubmit)}>
+                            <Text>Regisrer</Text>
+                        </Pressable>
+                    </Link>
                 </View>
                 <View style={styles.separator}/>
                 <View style={{padding:10}}>
-                    <Button title='LogIn' onPress={()=>router.push('/index')}/>
+                    <Link href="/" asChild>
+                        <Pressable>
+                            <Text>LogIn</Text>
+                        </Pressable>
+                    </Link>
                 </View>
             </View>
             
