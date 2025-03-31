@@ -15,7 +15,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.stas.raitisapp",
       "config": {
-        "googleMapsApiKey": "AIzaSyCygPOC1IMtvHv-6WSuquQrlUUuRuLG1UM"
+        "googleMapsApiKey": "YOUR_API_KEY"
       }
       
     },
